@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Delete!</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="popup-header-div">
+        <p class="popup-header">Delete {{ data.name }}</p><span>?</span>
+    </div>
+    
+    <p *ngIf="data.message !== undefined">{{ data.message }}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+
+    <button mat-button type="button" cdkFocusInitial mat-dialog-close>Cancel</button>
+    <button mat-button type="button" color="warn" (click)="approveDelete()">Delete</button>
+</mat-dialog-actions>

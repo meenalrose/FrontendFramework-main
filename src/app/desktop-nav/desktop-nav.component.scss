@@ -1,0 +1,50 @@
+.mat-expansion-panel-body .mat-icon {
+    margin-top: 3px;
+}
+
+.img-responsive {
+    width: 100%;
+    text-align: center;
+    img {
+        width: auto;
+        height: 50px;
+        max-width: 75%;
+        margin-top: 10px;
+    }
+}
+
+.nest {
+    margin-top: 6px;
+}
+.nest-list {
+    padding-top: 5px !important;
+}
+
+.mat-icon {
+    font-size: 16px !important;
+    // color: #404040;
+}
+
+.mat-expansion-panel-body .mat-icon {
+    margin-top: 3px;
+}
+
+span.expansion-header-text {
+    padding: 0 16px;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.mat-toolbar {
+    background-color: white;
+}
+
+.small {
+    mat-icon {
+        text-align: center !important;
+    }
+}
+
+.mat-expansion-panel-spacing {
+    margin: 0 !important;
+}

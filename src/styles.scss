@@ -1,0 +1,311 @@
+/* You can add global styles to this file, and also import other style files */
+@import './table.scss';
+
+// Import material theming functions
+@import '~@angular/material/theming';
+
+@import url('https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp');
+// @import url('https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css');
+
+// Copy the palettes from your selected theme (usually theme.scss).
+$app-primary: mat-palette($mat-grey, 200);
+$app-accent: mat-palette($mat-amber);
+$app-warn: mat-palette($mat-red);
+
+// Create your Sass color vars (will be available in all the project)
+$primary: mat-color($app-primary);
+$accent: mat-color($app-accent);
+$warn: mat-color($app-warn);
+
+@font-face {
+  font-family: 'Avenir-Medium';
+  src: url('./assets/fonts/Avenir-Medium.woff');
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-size: 15px;
+  background-color: transparent !important;
+}
+
+* {
+  font-family: 'Avenir-Medium', sans-serif;
+}
+
+table {
+  width: 100%;
+
+  .row-blocked {
+    background-color: #fbdadd;
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.img-responsive {
+  width: 100% !important;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.non-visible {
+  visibility: hidden;
+}
+
+.entryForm {
+  mat-expansion-panel {
+
+    mat-form-field,
+    mat-checkbox {
+      padding: 0 15px;
+    }
+  }
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.small-text {
+  font-size: 12px;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.mat-toolbar.mat-primary {
+  background: #0d47a1 !important;
+  color: #fff;
+}
+
+.mat-nav-list a.active,
+.mat-menu button.active {
+  background: $primary;
+}
+
+.table-responsive {
+  overflow: auto;
+}
+
+.copyText {
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  width: 100% !important;
+}
+
+.copyText:focus,
+.copyText:active,
+.copyText:hover,
+.copyText:visited,
+.copyText:focus-within {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.mat-chip-list-wrapper {
+  display: inline-block !important;
+}
+
+.mat-menu-item {
+  height: 40px !important;
+  line-height: 40px !important;
+
+  .mat-icon {
+    margin-right: 5px !important;
+    margin-top: 4px !important;
+  }
+}
+
+mat-nav-list {
+  height: 100%;
+  overflow: auto;
+
+  .mat-list-item {
+    font-size: 15px !important;
+    height: 40px !important;
+
+    mat-icon {
+      padding: 0 !important;
+      height: 16px !important;
+    }
+
+    .mat-list-text {
+      padding-left: 3px !important;
+    }
+  }
+
+  mat-expansion-panel {
+    .mat-expansion-panel-header {
+      height: 40px !important;
+      padding: 0 15px;
+
+      .mat-expansion-indicator {
+        margin-top: -7px;
+      }
+
+      .expansion-header-text {
+        white-space: nowrap;
+        padding-left: 3px !important;
+      }
+    }
+
+    .mat-expansion-panel-header.mat-expanded {
+      .mat-expansion-indicator {
+        margin-top: 0;
+      }
+    }
+
+    .mat-expansion-panel-content {
+      .mat-expansion-panel-body {
+        padding: 0 0 0 15px;
+
+        mat-nav-list {
+          padding-top: 0;
+
+          .mat-list-item {
+            mat-icon {
+              // margin-top: 3px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  a.mat-list-item {
+    .mat-list-item-content {
+      padding: 0 15px !important;
+    }
+  }
+}
+
+google-chart {
+  div {
+    div {
+      div {
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  mat-form-field {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    min-width: 0 !important;
+  }
+}
+
+div.charts {
+  width: 100%;
+  display: inline-block;
+
+  div {
+    div {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+
+.charts-filter {
+  padding-top: 10px !important;
+  padding-bottom: 5px !important;
+}
+
+.spin {
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.mat-card-header-text {
+  margin: 0 !important;
+}
+
+.popup-header-div{
+  display: flex; 
+}
+.popup-header{
+  overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+}
+.popup-div-close{
+  margin-top: -5px;
+  margin-right: 2px;
+}
+
+.help-icon{
+  padding-top: 10px;
+}
+
+.info-parent{
+  display: flex;
+}
+
+ .info-child{
+   width: 48%;
+ }
+.response-help-icon{
+  padding-top: 10px;
+}
+
+.sub-keyword-button{
+  width: 100%; 
+  text-align: left;
+}
+
+*:focus {
+  outline: none !important;
+  border: 0 !important;
+}

@@ -1,0 +1,27 @@
+<mat-card class="mat-elevation-z1 full-height no-padding" [ngClass]="{'card-big':
+    mode ===
+    'big', 'card-small': mode === 'small'}">
+
+  <mat-nav-list [@.disabled]="true" *ngIf="mode === 'big'">
+    <a mat-list-item [href]="backLink">
+      <mat-icon mat-list-icon>arrow_back</mat-icon>
+      <span mat-line>Back</span>
+    </a>
+    <a mat-list-item (click)="navigateTo('bots')" [ngClass]="{ active: activatedModule.bots
+            }">
+      <mat-icon mat-list-icon>smart_toy</mat-icon>
+      <span mat-line>Bots</span>
+    </a>
+
+  </mat-nav-list>
+
+  <mat-nav-list *ngIf="mode === 'small'">
+    <a mat-list-item [href]="backLink">
+      <mat-icon mat-list-icon>arrow_back</mat-icon>
+    </a>
+    <a mat-list-item (click)="navigateTo('bots')" [ngClass]="{ active: activatedModule.bots
+            }">
+      <mat-icon mat-list-icon>smart_toy</mat-icon>
+    </a>
+  </mat-nav-list>
+</mat-card>

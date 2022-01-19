@@ -1,0 +1,62 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav mat-elevation-z6" fixedInViewport="true" *ngIf="(isHandset$ | async)"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" mode="over" [opened]="false">
+
+    <mat-nav-list [@.disabled]="true">
+      <a mat-list-item [href]="backLink">
+        <mat-icon mat-list-icon>arrow_back</mat-icon>
+        <span mat-line>Back</span>
+      </a>
+      <a mat-list-item (click)="navigateTo('bots')">
+        <mat-icon mat-list-icon>smart_toy</mat-icon>
+        <span mat-line>Bots</span>
+      </a>
+      <!-- <a mat-list-item routerLink="/assignNumbers" routerLinkActive="active">Crisis Center</a> -->
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-elevation-z1">
+      <button *ngIf="(isHandset$ | async)" mat-icon-button (click)="toggleDrawer()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <button *ngIf="!(isHandset$ | async)" mat-icon-button (click)="toggleSize()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+      <span>Bots</span>
+      <span class="sideNote">{{ title }}</span>
+      <span class="spacer"></span>
+      <span class="current-time" *ngIf="!(isHandset$ | async)">{{dateMessage}}</span>
+      <button mat-icon-button (click)="logout()">
+        <mat-icon>power_settings_new</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <!-- Add Content Here -->
+    <div *ngIf="!(isHandset$ | async)" class="main-content" [ngClass]="{'big': menuSize === 'big',
+            'small': menuSize === 'small'}">
+      <div class="sidebar">
+        <app-desktop-nav [activatedModule]="activatedModule" (navigate)="navigateTo($event)" [mode]="menuSize">
+        </app-desktop-nav>
+      </div>
+      <div class="router-content">
+        <div class="container-fluid mt-2">
+          <div class="row">
+            <div class="col-12">
+              <router-outlet (activate)="onActivate($event)"></router-outlet>
+              <h5 class="text-right mr-3">© Copyright:</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="(isHandset$ | async)" class="container-fluid mt-2">
+      <div class="row">
+        <div class="col-12">
+          <router-outlet (activate)="onActivate($event)"></router-outlet>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
