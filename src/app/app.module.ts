@@ -36,6 +36,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DeletePromptComponent } from './prompts/delete-prompt/delete-prompt.component';
+import { MarkListComponent } from './mark-list/mark-list.component';
+import { MarksFormComponent } from './mark-list/marks-form/marks-form.component';
+import { StudentsListComponent } from './students-list/students-list.component';
+import { StudentFormComponent } from './students-list/student-form/student-form.component';
+import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +48,11 @@ import { DeletePromptComponent } from './prompts/delete-prompt/delete-prompt.com
     DesktopNavComponent,
     PageNotFoundComponent,
     DeletePromptComponent,
+    MarkListComponent,
+    MarksFormComponent,
+    StudentsListComponent,
+    StudentFormComponent,
+    DeleteConfirmationComponent,
   ],
   imports: [
     BrowserModule,
