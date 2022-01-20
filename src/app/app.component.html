@@ -3,13 +3,13 @@
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" mode="over" [opened]="false">
 
     <mat-nav-list [@.disabled]="true">
-      <a mat-list-item [href]="backLink">
-        <mat-icon mat-list-icon>arrow_back</mat-icon>
-        <span mat-line>Back</span>
+      <a mat-list-item (click)="navigateTo('students')">
+        <mat-icon mat-list-icon>person</mat-icon>
+        <span mat-line>Students</span>
       </a>
-      <a mat-list-item (click)="navigateTo('bots')">
-        <mat-icon mat-list-icon>smart_toy</mat-icon>
-        <span mat-line>Bots</span>
+      <a mat-list-item (click)="navigateTo('marks')">
+        <mat-icon mat-list-icon>person</mat-icon>
+        <span mat-line>Marks</span>
       </a>
       <!-- <a mat-list-item routerLink="/assignNumbers" routerLinkActive="active">Crisis Center</a> -->
     </mat-nav-list>
@@ -24,7 +24,7 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
 
-      <span>Bots</span>
+      <span>Students</span>
       <span class="sideNote">{{ title }}</span>
       <span class="spacer"></span>
       <span class="current-time" *ngIf="!(isHandset$ | async)">{{dateMessage}}</span>

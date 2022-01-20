@@ -24,9 +24,8 @@ export class AppComponent implements OnInit {
     .pipe(map((result) => result.matches))
 
   activatedModule = {
-    bots: false,
-    assignNumbers: false,
-    keywords: false,
+    students: false,
+    marks: false,
   }
   menuSize = 'big';
   parameters: any = null
@@ -58,20 +57,20 @@ export class AppComponent implements OnInit {
   }
 
   printTitle(url: string) {
-    if (url === '/bots') {
-      this.title = 'Bots';
-      this.activatedModule.bots = true;
+    if (url === '/students') {
+      this.title = 'Students';
+      this.activatedModule.students = true;
     }
 
-    if (url === '/keywords') {
-      this.title = 'Keywords';
-      this.activatedModule.keywords = true;
+    if (url === '/marks') {
+      this.title = 'Marks';
+      this.activatedModule.marks = true;
     }
 
-    if (url === '/assignNumbers') {
-      this.title = 'Assign Numbers';
-      this.activatedModule.assignNumbers = true;
-    }
+    // if (url === '/assignNumbers') {
+    //   this.title = 'Assign Numbers';
+    //   this.activatedModule.assignNumbers = true;
+    // }
   }
 
   toggleDrawer() {
@@ -87,9 +86,8 @@ export class AppComponent implements OnInit {
   navigateTo(url: string, parameters = null) {
     this.toggleDrawer();
     this.activatedModule = {
-      bots: false,
-      assignNumbers: false,
-      keywords: false,
+      students: false,
+      marks: false,
     };
     this.parameters = parameters;
 

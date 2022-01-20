@@ -12,14 +12,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     providedIn: 'root',
 })
 export class ApiService {
-    public baseUrl = 'https://alpha.botsapi.app.mapapi.io/';
-    // public baseUrl = 'http://localhost:3000/';
-    public misApi = 'https://alpha.panel.mapapi.io/v1/api/';
-    public fileBaseUrl = 'https://alpha.panel.mapapi.io/v1/';
-    public appUrl = 'https://alpha.panel.mapapi.io';
+
+    public baseUrl = 'http://localhost:8000/api/';
+    public fileBaseUrl = 'http://localhost:8000/';
+    public appUrl = 'http://localhost:8000/';
 
 
-    public appTitle = 'Bots';
+    public appTitle = 'MIS';
 
     private internetConnection: boolean = true;
     constructor(
@@ -29,9 +28,9 @@ export class ApiService {
         private http: HttpClient,
         private snackBar: MatSnackBar
     ) {
-        this.misApi = `${window.location.protocol}//${window.location.host}/v1/api/`;
-        this.fileBaseUrl = `${window.location.protocol}//${window.location.host}/v1/`;
-        this.appUrl = window.location.host;
+        // this.misApi = `${window.location.protocol}//${window.location.host}/v1/api/`;
+        // this.fileBaseUrl = `${window.location.protocol}//${window.location.host}/v1/`;
+        // this.appUrl = window.location.host;
 
         window.addEventListener('offline', () => {
             if (this.internetConnection) {
@@ -51,21 +50,7 @@ export class ApiService {
         }, 5000);
     }
 
-    checkInternetConnection() {
-        this.http.get(`${this.misApi}countries`)
-            .pipe(timeout(5000), catchError(this.handleError('checkInternetConnection', [])))
-            .subscribe((response: any) => {
-                if (response.status >= 200 && response.status < 304) {
-                    if (!this.internetConnection) {
-                        this.snackBar.open('Connection restored', 'x', {
-                            duration: 5000,
-                            verticalPosition: 'bottom'
-                        });
-                    }
-                    this.internetConnection = true;
-                }
-            });
-    }
+    checkInternetConnection() { }
 
     /**
      * Handle Http operation that failed.
@@ -75,31 +60,11 @@ export class ApiService {
      */
     handleError<T>(operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
-            if (error instanceof TimeoutError) {
-                if (this.internetConnection && operation !== 'getExportLogs') {
-                    this.internetConnection = false;
-
-                    this.snackBar.open('Not connected, Please check your internet connection', null, {
-                        duration: 0,
-                        verticalPosition: 'bottom'
-                    });
-                }
-
-                return throwError('Timeout Exception');
-            }
-
-            if (error.hasOwnProperty('jwt')) {
-                if (error.error.hasOwnProperty('jwt')) {
-                    this.tokenService.setToken(error.error.jwt);
-                }
-            }
 
             if (Math.floor(error.status) === 401) {
                 console.log('401 Unauthenticated', operation);
 
                 this.dialog.closeAll();
-                // this.tokenService.clearToken();
-                // this.router.navigate(['/login']);
                 window.location.replace('/login');
             }
 
@@ -107,8 +72,6 @@ export class ApiService {
                 console.log('403 Unauthorized', operation);
 
                 this.dialog.closeAll();
-                // this.tokenService.clearToken();
-                // this.router.navigate(['/login']);
                 window.location.replace('/');
             }
 

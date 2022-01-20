@@ -1,1 +1,82 @@
-<p>student-form works!</p>
+<form class="entryForm" [formGroup]="studentForm" role="form" (ngSubmit)="saveForm()">
+    <h1 mat-dialog-title>
+      {{formHeading}}
+      <button type="button" mat-icon-button class="float-right" (click)="onNoClick()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </h1>
+    <mat-dialog-content>
+      <div class="row">
+        <!-- <div class="col-md-4">
+                  <mat-form-field>
+                      <mat-select placeholder="Reseller" name="reseller_id" formControlName="reseller_id">
+                          <mat-option *ngFor="let reseller of resellers" [value]="reseller.id">
+                              {{reseller.name}}
+                          </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="reseller_id.errors?.required">
+                          Name is required.
+                      </mat-error>
+                      <mat-error *ngIf="reseller_id.errors?.serError">
+                          {{ reseller_id.errors?.errMessages }}
+                      </mat-error>
+                  </mat-form-field>
+              </div> -->
+        <div class="col-md-4">
+          <mat-form-field>
+            <input matInput placeholder="Name" name="name" formControlName="name">
+            <mat-error *ngIf="name.errors?.required">
+              Name is required.
+            </mat-error>
+            <mat-error *ngIf="name.errors?.maxlength">
+              Name must not be longer than 255 characters.
+            </mat-error>
+            <mat-error *ngIf="name.errors?.serError">
+              {{ name.errors?.errMessages }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field>
+            <input matInput placeholder="Age" name="age" formControlName="age">
+            <mat-error *ngIf="age.errors?.required">
+              Age is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field>
+            <mat-select placeholder="Gender" name="gender" formControlName="gender">
+              <mat-option *ngFor="let gender of genderList" [value]="gender.id">
+                {{gender.gender}}
+            </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field>
+            <mat-select placeholder="Reporting Teacher" name="teacher_id" formControlName="teacher_id">
+                <mat-option *ngFor="let teacher of teachers" [value]="teacher.id">
+                    {{teacher.name}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="teacher_id.errors?.required">
+                Name is required.
+            </mat-error>
+            <mat-error *ngIf="teacher_id.errors?.serError">
+                {{ teacher_id.errors?.errMessages }}
+            </mat-error>
+        </mat-form-field>
+        </div>
+      </div>
+  
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button color="primary" mat-raised-button [disabled]="!studentForm.valid" type="submit">
+        <!-- <mat-icon *ngIf="progress.formSubmit" class="spin">autorenew</mat-icon> -->
+        <mat-icon>save</mat-icon>
+        Save
+      </button>
+    </mat-dialog-actions>
+  </form>
+  

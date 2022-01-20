@@ -1,1 +1,65 @@
-<p>marks-form works!</p>
+<form class="entryForm" [formGroup]="marksForm" role="form" (ngSubmit)="submit()">
+    <h1 mat-dialog-title>
+        {{formHeading}}
+        <button type="button" mat-icon-button class="float-right" (click)="onNoClick()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </h1>
+    <mat-dialog-content>
+        <div class="row">
+            <div class="col-md-4">
+                <mat-form-field id="studentId">
+                    <mat-select placeholder="Student"  name="student" formControlName="student">
+                        <!-- <mat-option value="">All</mat-option> -->
+                        <mat-option *ngFor="let student of students" [value]="student.id">
+                            {{student.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field id="termId">
+                    <mat-select placeholder="Term"  name="term" formControlName="term">
+                        <mat-option *ngFor="let term of terms" [value]="term.id">
+                            {{term.id}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <mat-form-field>
+                    <input matInput placeholder="Maths" name="maths" formControlName="maths">
+                    <mat-error *ngIf="maths.errors?.required">
+                        Mark is required.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field>
+                    <input matInput placeholder="Science" name="science" formControlName="science">
+                    <mat-error *ngIf="science.errors?.required">
+                        Mark is required.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field>
+                    <input matInput placeholder="History" name="history" formControlName="history">
+                    <mat-error *ngIf="history.errors?.required">
+                        Mark is required.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button color="primary"  mat-raised-button [disabled]="!marksForm.valid" type="submit">
+            <!-- <mat-icon *ngIf="progress.formSubmit" class="spin">autorenew</mat-icon> -->
+            <mat-icon>save</mat-icon>
+            Save
+        </button>
+    </mat-dialog-actions>
+</form>

@@ -1,1 +1,79 @@
-<p>mark-list works!</p>
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div class="col-sm-12">
+            <mat-card class="mat-elevation-z3">
+                <div class="row">
+                    <div class="col-md-9"></div>
+                    <div class="col-md-3">
+                        <form >
+                            <!-- (ngSubmit)="paginateRequest()" [(ngModel)]="searchString" -->
+                            <mat-form-field id="search" class="float-right">
+                                <input matInput placeholder="Search" name="searchString"  />
+                                <button type="submit" mat-raised-button color="primary" mat-icon-button matSuffix>
+                                    <mat-icon>search</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </form>   
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" color="primary" mat-button (click)="addStudentMarks()"
+                            style="margin-top: 10px;">
+                            <mat-icon>add</mat-icon>
+                            Add Marks
+                        </button>
+                    </div>
+                </div>
+                <mat-card-content>
+                    <div class="table-responsive">
+                        <!-- (matSortChange)="sortData($event)" -->
+                        <table matSort 
+                            class="custom-mat-table mat-elevation-z1 mb-5">
+                            <thead>
+                                <tr>
+                                    <th mat-sort-header="id">#</th>
+                                    <th>Name</th>
+                                    <th>Maths</th>
+                                    <th>Science</th>
+                                    <th>History</th>
+                                    <th>Term</th>
+                                    <th>Total Marks</th>
+                                    <th>Created On</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of marksList; let i = index">
+                                    <td>{{ i + 1 }}</td>
+                                    <td>{{ data.name }}</td>
+                                    <td>{{ data.maths }}</td>
+                                    <td>{{ data.science }}</td>
+                                    <td>{{ data.history }}</td>
+                                    <td>{{data.term}}</td>
+                                    <td>{{ data.totalmark }}</td>
+                                    <td>{{ data.created_at | date}}</td>
+                                    <td>
+                                        <button mat-icon-button [matMenuTriggerFor]="markDataMenu">
+                                            <mat-icon matTooltip="Actions">more_vert</mat-icon>
+                                        </button>
+                                        <mat-menu #markDataMenu="matMenu">
+                                            <button mat-menu-item (click)="editMark(data)">EDIT</button>
+                                            <button mat-menu-item (click)="deleteMark(data)">DELETE</button>
+                                        </mat-menu>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- <mat-paginator #paginator [pageSizeOptions]="[15, 30, 50, 100]"
+                            [length]="clientService.clientsData?.total" [pageSize]="pageSize"
+                            (page)="paginateRequest($event)" showFirstLastButtons>
+                        </mat-paginator> -->
+                    </div>
+
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
